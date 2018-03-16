@@ -59,7 +59,7 @@ std::size_t vector_t::size() const
 
 std::size_t vector_t::capacity() const
 {
-    return 0;
+    return elements_[0];
 }
 
 void vector_t::push_back(int value)
