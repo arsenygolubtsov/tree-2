@@ -79,7 +79,7 @@ void vector_t::push_back(int value)
             delete [] elements_;
             capacity_ = 2 * capacity_;
             elements_ = new int[capacity_];
-            for(std::size_t i = 0, i < size_; ++i){
+            for(std::size_t i = 0; i < size_; ++i){
                 elements_[i] = massive[i];
             }
             delete [] massive;
@@ -105,7 +105,7 @@ void vector_t::pop_back()
         delete [] elements_;
         capacity_ = capacity_ / 2;
         elements_ = new int[capacity_];
-        for(std::size_t i = 0, i < size_; ++i){
+        for(std::size_t i = 0; i < size_; ++i){
             elements_[i] = massive[i];
         }
         delete [] massive;
