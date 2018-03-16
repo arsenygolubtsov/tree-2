@@ -47,7 +47,7 @@ bool vector_t::operator ==(vector_t const & other) const
 
 vector_t::~vector_t()
 {
-    delete [] elements_;
+    delete[] elements_;
 }
 
 std::size_t vector_t::size() const
