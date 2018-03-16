@@ -17,6 +17,7 @@ vector_t::vector_t(vector_t const & other)
     elements_ = new int[capacity_];
     for(std::size_t i = 0; i < size_; ++i){
         elements_[i] = other.elements_[i];
+    }
 }
 
 vector_t & vector_t::operator =(vector_t const & other)
