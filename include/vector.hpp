@@ -45,7 +45,7 @@ vector_t<T>::vector_t(vector_t const & other)
 {
     size_ = other.size_;
     capacity_ = other.capacity_;
-    T *elements_ = new T[capacity_];
+    elements_ = new T[capacity_];
     for(std::size_t i = 0; i < size_; ++i){
         elements_[i] = other.elements_[i];
     }
