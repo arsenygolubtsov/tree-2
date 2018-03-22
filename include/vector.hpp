@@ -26,7 +26,7 @@ public:
 	
 	T & at(std::size_t index) {
 	if(index >= size_) {
-		throw std::error("error_");
+		throw std::out_of_range("Error");
 		}
 	return (*this)[index];
 	}
