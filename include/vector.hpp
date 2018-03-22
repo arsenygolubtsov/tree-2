@@ -54,7 +54,7 @@ vector_t<T>::vector_t(vector_t const & other)
 template <typename T>
 vector_t<T> & vector_t<T>::operator =(vector_t const & other)
 {
-    if(*this != &other){
+    if(this != &other){
         delete [] elements_;
         size_ = other.size_;
         capacity_ = other.capacity_;
