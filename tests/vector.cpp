@@ -19,6 +19,30 @@ TEST_CASE("copying vector")
 	REQUIRE( copy == vector );
 }
 
+TEST_CASE("indexing vector int")
+{
+	vector_t<int> vector;
+
+	vector.push_back(1);
+
+	REQUIRE( vector[0] == 1 );
+
+	vector_t<int> const copy(vector);
+	REQUIRE( copy[0] == 1 );
+}
+
+TEST_CASE("indexing vector double")
+{
+	vector_t<double> vector;
+
+	vector.push_back(1.2);
+
+	REQUIRE( vector[0] == 1.2 );
+
+	vector_t<double> const copy(vector);
+	REQUIRE( copy[0] == 1.2 );
+}
+
 TEST_CASE("assigning vector int")
 {
 	vector_t<int> vector1;
