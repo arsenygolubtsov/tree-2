@@ -90,6 +90,7 @@ vector_t<T>::~vector_t()
     delete[] elements_;
 }
 
+template <typename T>
 std::size_t vector_t<T>::size() const
 {
     return size_;
