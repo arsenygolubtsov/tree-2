@@ -95,18 +95,6 @@ TEST_CASE("equaling vector float")
 	REQUIRE( vector1 != vector2 );
 }
 
-TEST_CASE("indexing vector")
-{
-	vector_t<int> vector;
-
-	vector.push_back(1);
-
-	REQUIRE( vector[0] == 1 );
-
-	vector_t<int> const copy(vector);
-	REQUIRE( copy[0] == 1 );
-}
-
 TEST_CASE("pushing elements")
 {
 	vector_t<int> vector;
