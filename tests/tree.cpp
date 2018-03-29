@@ -22,7 +22,7 @@ TEST_CASE("insert and print tree")
                         "----4\n"
                         "--3\n"
                         "----2\n"
-                        "------1\n" };
+                        "------1" };
 
     std::istringstream inp1{ input1 };
     std::istringstream inp2{ input2 };
@@ -49,7 +49,7 @@ TEST_CASE("find tree")
     std::string input2{ "+4\n" };
     std::string input3{ "+2\n" };
     std::string input4{ "+1\n" };
-    std::string input5{ "+5\n" };
+    std::string input5{ "+5" };
 
     std::istringstream inp1{ input1 };
     std::istringstream inp2{ input2 };
