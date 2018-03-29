@@ -32,7 +32,7 @@ public:
         }
         else
         {
-            node_t* run_ = tree;
+            node_t* run_ = root_;
             while (run_ != nullptr)
             {
                 if (value < run_->value)
