@@ -139,13 +139,10 @@ public:
 	}
 };
 
-bool read(tree_t& tree)
+bool read(tree_t& tree, std::istream & stream)
 {
     char op;
     int value;
-    std::string stroka;
-    getline(std::cin, stroka);
-    std::istringstream stream(stroka);
     if (stream >> op && (op == '=' || op == '+' || op == '?' || op == 'q'))
     {
         if ((op == '+' || op == '?') && stream >> value)
@@ -169,4 +166,5 @@ bool read(tree_t& tree)
             return false;
         }
     }
+	return true;
 }
