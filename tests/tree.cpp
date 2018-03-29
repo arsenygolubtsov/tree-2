@@ -23,9 +23,9 @@ TEST_CASE("insert and print")
         "--2/n"
         "------1/n"
         "----0/n"
-    }
+    };
     std::ostringstream ostream;
-    tree.print(ostream, tree.root());
+    tree.print(ostream, tree.root(), 0);
     REQUIRE(ostream.str() == output);
 }
 
