@@ -101,45 +101,54 @@ public:
     {
         return root_;
     }
-    
-    ~tree_t () {
-	if( root_ != nullptr) {
-		del(root_);
-	}
+
+    ~tree_t()
+    {
+        if (root_ != nullptr)
+        {
+            del(root_);
+        }
     }
-    
-    void del(node_t * run_){
-        if(run_!=nullptr){
-            if(run_->left!=nullptr){
+
+    void del(node_t* run_)
+    {
+        if (run_ != nullptr)
+        {
+            if (run_->left != nullptr)
+            {
                 del(run_->left);
             }
-            if(run_->right!=nullptr){
+            if (run_->right != nullptr)
+            {
                 del(run_->right);
             }
             delete run_;
         }
     }
 
-    void print(std::ostream & stream ,  node_t * run_ , size_t u) const
-	{
-		if (run_->right!=nullptr) {
-			u++;
-			print(stream ,run_->right, u);
-			u--;
-		}
-		for (size_t k = 0; k < u; k++) {
-			stream << "--";
-		}
-			stream << run_->value << std::endl;
-		if (run_->left!=nullptr) {
-			u++;
-			print(stream ,run_->left, u);
-			u--;
-		}
-	}
+    void print(std::ostream& stream, node_t* run_, size_t u) const
+    {
+        if (run_->right != nullptr)
+        {
+            u++;
+            print(stream, run_->right, u);
+            u--;
+        }
+        for (size_t k = 0; k < u; k++)
+        {
+            stream << "--";
+        }
+        stream << run_->value << std::endl;
+        if (run_->left != nullptr)
+        {
+            u++;
+            print(stream, run_->left, u);
+            u--;
+        }
+    }
 };
 
-bool read(tree_t& tree, std::istream & stream)
+bool read(tree_t& tree, std::istream& stream)
 {
     char op;
     int value;
@@ -166,5 +175,5 @@ bool read(tree_t& tree, std::istream & stream)
             return false;
         }
     }
-	return true;
+    return true;
 }
