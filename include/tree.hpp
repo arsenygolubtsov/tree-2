@@ -97,7 +97,7 @@ public:
         }
     }
 
-    node_t* root()
+    node_t* root() const
     {
         return root_;
     }
