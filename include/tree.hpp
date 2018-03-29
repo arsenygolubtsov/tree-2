@@ -157,7 +157,6 @@ bool read(tree_t& tree, std::istream& stream)
         if (op == '=')
         {
             tree.print(std::cout, tree.root(), 1);
-            std::cout << stream.str();
         }
         else if (op == 'q')
         {
