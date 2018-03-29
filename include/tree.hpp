@@ -80,7 +80,7 @@ public:
             node_t* run_ = root_;
             while (run_ != nullptr)
             {
-                if (run_->value = value)
+                if (run_->value == value)
                 {
                     return true;
                 }
