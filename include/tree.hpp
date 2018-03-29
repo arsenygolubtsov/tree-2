@@ -85,7 +85,7 @@ public:
         if (run_==nullptr) return;
         else{
             print(strem, run_->left, ++u);
-            for (size_t i=0; i<u; ++i) std::stream<<"|";
+            for (size_t i=0; i<u; ++i) std::stream<<"--";
             stream<<run_->value<<std::endl;
             u--;
         }
