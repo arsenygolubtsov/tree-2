@@ -44,6 +44,7 @@ public:
                         run_->value = value;
                         run_->left = nullptr;
                         run_->right = nullptr;
+                        return;
                     }
                     else
                     {
@@ -59,6 +60,7 @@ public:
                         run_->value = value;
                         run_->left = nullptr;
                         run_->right = nullptr;
+                        return;
                     }
                     else
                     {
