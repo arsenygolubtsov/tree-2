@@ -154,7 +154,16 @@ bool read(tree_t& tree, std::istream& stream)
     int value;
     if (stream >> op && (op == '=' || op == '+' || op == '?' || op == 'q'))
     {
-        if ((op == '+' || op == '?') && stream >> value)
+        if (op == '=')
+        {
+            tree.print(std::cout, tree.root(), 1);
+            std::cout << stream.str();
+        }
+        else if (op == 'q')
+        {
+            return false;
+        }
+        else if ((op == '+' || op == '?') && stream >> value)
         {
             if (op == '+')
             {
@@ -164,15 +173,6 @@ bool read(tree_t& tree, std::istream& stream)
             {
                 std::cout << tree.find(value) << std::endl;
             }
-        }
-        else if (op == '=')
-        {
-            tree.print(stream, tree.root(), 0);
-            std::cout << stream.str();
-        }
-        else if (op == 'q')
-        {
-            return false;
         }
     }
     return true;
