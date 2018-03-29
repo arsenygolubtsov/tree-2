@@ -37,7 +37,7 @@ TEST_CASE("insert and print tree")
     REQUIRE(read(tree, inp5));
 
     std::ostringstream ostream;
-    tree.print(ostream, tree.root());
+    tree.print(ostream, tree.root(), 1);
     REQUIRE(ostream.str() == result);
 }
 
