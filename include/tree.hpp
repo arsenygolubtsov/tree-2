@@ -104,17 +104,17 @@ public:
     
     ~tree_t () {
 	if( root_ != nullptr) {
-		delete(root_);
+		del(root_);
 	}
     }
     
-    void delete(node_t * run_){
+    void del(node_t * run_){
         if(run_!=nullptr){
             if(run_->left!=nullptr){
-                delete(run_->left);
+                del(run_->left);
             }
             if(run_->right!=nullptr){
-                delete(run_->right);
+                del(run_->right);
             }
             delete run_;
         }
