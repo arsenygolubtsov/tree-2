@@ -1,199 +1,118 @@
 #include <iostream>
+#include <sstream>
+#include <string>
 
-template <typename T>
-class vector_t
+class tree_t
 {
 private:
-    T* elements_;
-    std::size_t size_;
-    std::size_t capacity_;
-
+    struct node_t {
+        node_t * left;
+        node_t * right;
+        int value;
+    };
+private:
+    node_t * root_;
 public:
-    vector_t();
-    vector_t(vector_t const& other);
-    vector_t& operator=(vector_t const& other);
-    ~vector_t();
-
-    std::size_t size() const;
-    std::size_t capacity() const;
-
-    void push_back(T value);
-    void pop_back();
-
-    T& operator[](std::size_t index);
-    T operator[](std::size_t index) const;
-
-    bool operator==(vector_t const& other) const;
-
-    T& at(std::size_t index)
-    {
-        if (index >= size_)
-        {
-            throw std::out_of_range("Error");
+    tree_t(){
+        root_=nullptr;
+    }
+    
+    void insert(int value){
+        if(root_==nullptr){
+            root_=new node_t;
+            root_->value=value;
+            root_->left=nullptr;
+            root_->right=nullptr;
         }
-        return (*this)[index];
+        else{
+            node_t * run_=tree;
+            while(run_!=nullptr){
+                if(value<run_->value){
+                    if(run_->left==nullptr){
+                        run_->left=new node_t;
+                        run_=run_->left;
+                        run_->value=value;
+                        run_->left=nullptr;
+                        run_->right=nullptr;
+                    }
+                    else{
+                        run_=run_->left;
+                    }
+                }
+                else if(value>=run_->value){
+                    if(run_->right==nullptr){
+                        run_->right=new node_t;
+                        run_=run_->right;
+                        run_->value=value;
+                        run_->left=nullptr;
+                        run_->right=nullptr;
+                    }
+                    else{
+                        run_=run_->right;
+                    }
+                }
+            }
+        }
+    }
+    
+    bool find(int value) const{
+        if(root_==nullptr){
+            return false;
+        }
+        else{
+            node_t * run_=root_;
+            while(run_!=nullptr){
+                if(run_->value=value){
+                    return true;
+                }
+                else if(run_->value<value){
+                    run_=run_->right;
+                }
+                else if(run_->value>value){
+                    run_=run_->left;
+                }
+            }
+            return false;
+        }
+    }
+    
+    node_t * root()
+	{
+		return  root_;
+	}
+	
+    void print(std::ostream & stream, node_t * run_, size_t u) const{
+        if (run_==nullptr) return;
+        else{
+            print(strem, run_->left, ++u);
+            for (size_t i=0; i<u; ++i) std::stream<<"|";
+            stream<<run_->value<<std::endl;
+            u--;
+        }
+        print(stream, run_->right, ++u);
     }
 };
 
-template <typename T>
-vector_t<T>::vector_t()
-{
-    elements_ = nullptr;
-    size_ = 0;
-    capacity_ = 0;
-}
-
-template <typename T>
-vector_t<T>::vector_t(vector_t const& other)
-{
-    size_ = other.size_;
-    capacity_ = other.capacity_;
-    elements_ = new T[capacity_];
-    for (std::size_t i = 0; i < size_; ++i)
-    {
-        elements_[i] = other.elements_[i];
-    }
-}
-
-template <typename T>
-vector_t<T>& vector_t<T>::operator=(vector_t const& other)
-{
-    if (this != &other)
-    {
-        delete[] elements_;
-        size_ = other.size_;
-        capacity_ = other.capacity_;
-        elements_ = new T[capacity_];
-        for (std::size_t i = 0; i < size_; ++i)
-        {
-            elements_[i] = other.elements_[i];
-        }
-    }
-    return *this;
-}
-
-template <typename T>
-bool vector_t<T>::operator==(vector_t const& other) const
-{
-    bool success = true;
-    if (size_ == other.size_ && capacity_ == other.capacity_)
-    {
-        for (std::size_t i = 0; i < size_; ++i)
-        {
-            if (elements_[i] != other.elements_[i])
-            {
-                success = false;
-                break;
+bool read(tree_t & tree){
+    char op; int value;
+    std::string stroka;
+    getline(std::cin, stroka);
+    std::istringstream input(stroka);
+    if(input>>op && (op=='=' || op=='+' || op=='?' || op=='q')){
+        if((op=='+' || op=='?') && input>>value){
+            if(op=='+'){
+                tree.insert(value);
+            }
+            else if(op=='?'){
+                std::cout<<tree.find(value)<<std::endl;
             }
         }
-    }
-    else
-    {
-        success = false;
-    }
-
-    return success;
-}
-
-template <typename T>
-vector_t<T>::~vector_t()
-{
-    delete[] elements_;
-}
-
-template <typename T>
-std::size_t vector_t<T>::size() const
-{
-    return size_;
-}
-
-template <typename T>
-std::size_t vector_t<T>::capacity() const
-{
-    return capacity_;
-}
-
-template <typename T>
-void vector_t<T>::push_back(T value)
-{
-    if (capacity_ == 0)
-    {
-        capacity_ = 1;
-        size_ = 1;
-        elements_ = new T[capacity_];
-        elements_[0] = value;
-    }
-    else
-    {
-        if (size_ == capacity_)
-        {
-            T* massive;
-            massive = new T[size_];
-            for (std::size_t i = 0; i < size_; ++i)
-            {
-                massive[i] = elements_[i];
-            }
-            delete[] elements_;
-            capacity_ = 2 * capacity_;
-            elements_ = new T[capacity_];
-            for (std::size_t i = 0; i < size_; ++i)
-            {
-                elements_[i] = massive[i];
-            }
-            delete[] massive;
-            elements_[size_] = value;
-            size_++;
+        else if(op=='='){
+            tree.print(stream, tree.root(), 0);
+            std::cout << stream.str()
         }
-        else
-        {
-            elements_[size_] = value;
-            size_++;
+        else if(op=='q'){
+            return false;
         }
     }
-}
-
-template <typename T>
-void vector_t<T>::pop_back()
-{
-    size_--;
-    if (size_ == 0 || size_ * 4 == capacity_)
-    {
-        T* massive;
-        massive = new T[size_];
-        for (std::size_t i = 0; i < size_; ++i)
-        {
-            massive[i] = elements_[i];
-        }
-        delete[] elements_;
-        capacity_ = capacity_ / 2;
-        elements_ = new T[capacity_];
-        for (std::size_t i = 0; i < size_; ++i)
-        {
-            elements_[i] = massive[i];
-        }
-        delete[] massive;
-    }
-}
-
-template <typename T>
-T& vector_t<T>::operator[](std::size_t index)
-{
-    return elements_[index];
-}
-
-template <typename T>
-T vector_t<T>::operator[](std::size_t index) const
-{
-    return elements_[index];
-}
-
-template <typename T>
-bool operator!=(vector_t<T> const& lhs, vector_t<T> const& rhs)
-{
-    bool success = true;
-    if (lhs == rhs)
-    {
-        success = !success;
-    }
-    return success;
 }
