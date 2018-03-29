@@ -108,7 +108,7 @@ public:
             return;
         else
         {
-            print(strem, run_->left, ++u);
+            print(stream, run_->left, ++u);
             for (size_t i = 0; i < u; ++i)
                 std::stream << "--";
             stream << run_->value << std::endl;
@@ -141,7 +141,7 @@ bool read(tree_t& tree)
         else if (op == '=')
         {
             tree.print(stream, tree.root(), 0);
-            std::cout << stream.str()
+            std::cout << stream.str();
         }
         else if (op == 'q')
         {
