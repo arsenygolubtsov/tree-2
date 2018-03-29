@@ -124,10 +124,10 @@ bool read(tree_t& tree)
     int value;
     std::string stroka;
     getline(std::cin, stroka);
-    std::istringstream input(stroka);
-    if (input >> op && (op == '=' || op == '+' || op == '?' || op == 'q'))
+    std::istringstream stream(stroka);
+    if (stream >> op && (op == '=' || op == '+' || op == '?' || op == 'q'))
     {
-        if ((op == '+' || op == '?') && input >> value)
+        if ((op == '+' || op == '?') && stream >> value)
         {
             if (op == '+')
             {
