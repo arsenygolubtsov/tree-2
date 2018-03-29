@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/KadrusBAG/vector-0.0.2-2nd-sem-.svg?branch=master)](https://travis-ci.org/KadrusBAG/vector-0.0.2-2nd-sem-)
+[![Build Status](https://travis-ci.org/KadrusBAG/tree-0.0.1.svg?branch=master)](https://travis-ci.org/KadrusBAG/tree-0.0.1)
 ```
 cmake -H. -B_builds -DBUILD_TESTS=ON
 cmake --build _builds
