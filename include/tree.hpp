@@ -255,10 +255,11 @@ public:
     }
 };
 
-bool read(tree_t& tree, std::istream& stream)
+template <typename T>
+bool read(tree_t <T> & tree, std::istream& stream)
 {
     char op;
-    int value;
+    T value;
     if (stream >> op && (op == '=' || op == '+' || op == '?' || op == 'q'))
     {
         if (op == '=')
