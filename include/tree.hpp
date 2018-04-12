@@ -30,8 +30,7 @@ public:
         }
     }
     
-    bool auto operator==(tree_t const & other) const{
-        node_t* a=tree_t.root_; node_t* b=other.root_;
+    bool equal(node_t* a, node_t* b) const{
         if (a==nullptr && b==nullptr) return(true);
         else if (a!=nullptr && b!=nullptr)
         {
@@ -42,6 +41,16 @@ public:
             );
         }
         else return(false);
+    }
+    
+    auto operator==(tree_t const & other) const{
+        node_t* a=tree_t.root_; node_t* b=other.root_;
+        if(equal(a, b)){
+            cout<<"TRUE"<<endl;
+        }
+        else{
+            cout<<"FALSE"<<endl;
+        }
     }
 
     void insert(T value)
