@@ -36,8 +36,8 @@ public:
         {
             return(
                     a->value == b->value &&
-                    equals(a->left, b->left) &&
-                    equals(a->right, b->right)
+                    equal(a->left, b->left) &&
+                    equal(a->right, b->right)
             );
         }
         else return(false);
