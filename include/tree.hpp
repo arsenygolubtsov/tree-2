@@ -46,10 +46,10 @@ public:
     auto operator==(tree_t const & other) const{
         node_t* a=root_; node_t* b=other.root_;
         if(equal(a, b)){
-            cout<<"TRUE"<<endl;
+            std::cout<<"TRUE"<<std::endl;
         }
         else{
-            cout<<"FALSE"<<endl;
+            std::cout<<"FALSE"<<std::endl;
         }
     }
 
