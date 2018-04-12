@@ -103,7 +103,7 @@ public:
         }
     }
     
-    bool remove(T value){
+   bool remove(T value){
        if (root_ == nullptr)
        {
            return false;
@@ -128,7 +128,7 @@ public:
                    param1=param2;
                    param2 = param2->left;
                }
-               else if(param2 == nullptr){
+               if(param2 == nullptr){
                    break;
                }
            }
@@ -148,19 +148,19 @@ public:
                else{
                    if(param2->left==nullptr && param2->right!=nullptr){
                        if(param2==param1->right){
-                           param1->right=nullptr;
+                           param1->right=param2->right;
                        }
                        if(param2==param1->left){
-                           param1->left=nullptr;
+                           param1->left=param2->right;
                        }
                        delete param2;
                    }
                    else if(param2->left!=nullptr && param2->right==nullptr){
                        if(param2==param1->right){
-                           param1->right=nullptr;
+                           param1->right=param2->left;
                        }
                        if(param2==param1->left){
-                           param1->left=nullptr;
+                           param1->left=param2->left;
                        }
                        delete param2;
                    }
