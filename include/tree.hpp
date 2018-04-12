@@ -137,6 +137,12 @@ public:
            }
            else{
                if(param2->left==nullptr && param2->right==nullptr){
+                   if(param2==param1->right){
+                       param1->right=nullptr;
+                   }
+                   if(param2==param1->left){
+                       param1->left=nullptr;
+                   }
                    delete param2;
                }
                else{
