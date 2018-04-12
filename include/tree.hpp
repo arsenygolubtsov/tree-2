@@ -2,6 +2,7 @@
 #include <sstream>
 #include <string>
 
+template <typename T>
 class tree_t
 {
 private:
@@ -9,7 +10,7 @@ private:
     {
         node_t* left;
         node_t* right;
-        int value;
+        T value;
     };
 
 private:
@@ -20,8 +21,16 @@ public:
     {
         root_ = nullptr;
     }
+    
+    tree_t(std::initializer_list<T> keys){
+        int n = keys.size();
+        const int* param = keys.begin();
+        for (int i=0; i < n; i++){
+            insert(param[i]);
+        }
+    }
 
-    void insert(int value)
+    void insert(T value)
     {
         if (root_ == nullptr)
         {
@@ -70,8 +79,81 @@ public:
             }
         }
     }
+    
+    bool remove(T value){
+       if (root_ == nullptr)
+       {
+           return false;
+       }
+       else
+       {
+           node_t* param1 = root_;
+           node_t* param2 = root_;
+           while (1)
+           {
+               if (param2->value == value)
+               {
+                   break;
+               }
+               else if (param2->value < value)
+               {
+                   param1=param2;
+                   param2 = param2->right;
+               }
+               else if (param2->value > value)
+               {
+                   param1=param2;
+                   param2 = param2->left;
+               }
+               else if(param2 == nullptr){
+                   break;
+               }
+           }
+           if(param2==nullptr){
+               return false;
+           }
+           else{
+               if(param2->left==nullptr && param2->right==nullptr){
+                   delete param2;
+               }
+               else{
+                   if(param2->left==nullptr && param2->right!=nullptr){
+                       if(param2==param1->right){
+                           param1->right=param2->right;
+                       }
+                       if(param2==param1->left){
+                           param1->left=param2->right;
+                       }
+                       delete param2;
+                   }
+                   else if(param2->left!=nullptr && param2->right==nullptr){
+                       if(param2==param1->right){
+                           param1->right=param2->left;
+                       }
+                       if(param2==param1->left){
+                           param1->left=param2->left;
+                       }
+                       delete param2;
+                   }
+                   else if(param2->left!=nullptr && param2->right!=nullptr){
+                       node_t* param=param2;
+                       param1=param2;
+                       param2=param2->right;
+                       while (param2->left!=nullptr){
+                           param1=param2;
+                           param2=param2->left;
+                       }
+                       param->value=param2->value;
+                       param1=param2->right;
+                       delete param2;
+                   }
+               }
+           }
+       }
+       return true;
+   }
 
-    bool find(int value) const
+    bool find(T value) const
     {
         if (root_ == nullptr)
         {
