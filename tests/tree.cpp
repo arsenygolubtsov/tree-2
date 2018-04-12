@@ -143,7 +143,7 @@ TEST_CASE("deleting")
                             "----2\n"
                             "------1\n"};
     	
-    	tree.remove(int 5);
+    	tree.remove(5);
     	std::string result5{"------10\n"
 	                        "----------8\n"
                             "--------7\n"
@@ -155,7 +155,7 @@ TEST_CASE("deleting")
 	    tree.print(ostream1, tree.root(), 1);
 	    REQUIRE( ostream1.str() == result5 );
 	       
-	    tree.remove(int 1);
+	    tree.remove(1);
     	std::string result1{"------10\n"
 	                        "----------8\n"
                             "--------7\n"
