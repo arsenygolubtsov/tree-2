@@ -29,6 +29,20 @@ public:
             insert(param[i]);
         }
     }
+    
+    bool auto operator==(tree_t const & other) const{
+        node_t* a=tree_t.root_; node_t* b=other.root_;
+        if (a==nullptr && b==nullptr) return(true);
+        else if (a!=nullptr && b!=nullptr)
+        {
+            return(
+                    a->value == b->value &&
+                    equals(a->left, b->left) &&
+                    equals(a->right, b->right)
+            );
+        }
+        else return(false);
+    }
 
     void insert(T value)
     {
