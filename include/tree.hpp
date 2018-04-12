@@ -173,7 +173,7 @@ public:
                            param2=param2->left;
                        }
                        param->value=param2->value;
-                       param1=param2->right;
+                       param1->left=param2->right;
                        delete param2;
                    }
                }
