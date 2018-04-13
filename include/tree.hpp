@@ -46,12 +46,7 @@ public:
     
     auto operator==(tree_t const & other) const{
         node_t* a=root_; node_t* b=other.root_;
-        if(equal(a, b)){
-            std::cout<<"TRUE"<<std::endl;
-        }
-        else{
-            std::cout<<"FALSE"<<std::endl;
-        }
+        return (equal(a, b));
     }
 
     void insert(T value)
