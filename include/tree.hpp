@@ -23,6 +23,7 @@ public:
     }
     
     tree_t(std::initializer_list<T> keys){
+        root_=nullptr;
         int n = keys.size();
         const int* param = keys.begin();
         for (int i=0; i < n; i++){
