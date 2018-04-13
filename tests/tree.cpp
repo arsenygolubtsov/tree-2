@@ -131,6 +131,18 @@ TEST_CASE("find tree double")
     REQUIRE(tree.find(0) == false);
 }
 
+TEST_CASE("equal")
+{
+	tree_t<int> tree1;
+	tree_t<int> tree2 {3 , 4 , 2 , 1 , 5};
+	tree1.insert(3);
+	tree1.insert(4);
+	tree1.insert(2);
+	tree1.insert(1);
+	tree1.insert(5);
+	REQUIRE(tree1==tree2);
+}
+
 TEST_CASE("deleting")
 {
     	tree_t<int> tree{3, 4, 2, 1, 5, 10, 7, 8};    	
