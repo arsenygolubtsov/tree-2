@@ -173,7 +173,7 @@ TEST_CASE("deleting")
 			    "------5\n"
 			    "----3\n"
 			    "------1\n"};
-	    std::ostringstream ostream2;
-	    tree.print(ostream2, tree0.root(), 1);
-	    REQUIRE( ostream2.str() == result11 )
+	    std::ostringstream ostream3;
+	    tree.print(ostream3, tree0.root(), 1);
+	    REQUIRE( ostream3.str() == result11 );
 }
