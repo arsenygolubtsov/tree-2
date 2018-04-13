@@ -133,17 +133,9 @@ TEST_CASE("find tree double")
 
 TEST_CASE("deleting")
 {
-    	tree_t<int> tree{3, 4, 2, 1, 5, 10, 7, 8};
-	    std::string result{ "--------10\n"
-	                        "------------8\n"
-                            "----------7\n"
-                            "------5\n"
-                            "----4\n"
-                            "--3\n"
-                            "----2\n"
-                            "------1\n"};
+    	tree_t<int> tree{3, 4, 2, 1, 5, 10, 7, 8};    	
     	
-    	tree.remove(5);
+	tree.remove(5);
     	std::string result5{"------10\n"
 	                        "----------8\n"
                             "--------7\n"
@@ -156,7 +148,7 @@ TEST_CASE("deleting")
 	    REQUIRE( ostream1.str() == result5 );
 	       
 	    tree.remove(1);
-    	std::string result1{"------10\n"
+    		std::string result1{"------10\n"
 	                        "----------8\n"
                             "--------7\n"
                             "----4\n"
@@ -165,4 +157,23 @@ TEST_CASE("deleting")
 	    std::ostringstream ostream2;
 	    tree.print(ostream2, tree.root(), 1);
 	    REQUIRE( ostream2.str() == result1 );
+	
+	tree_t<int> tree0{8, 3, 11, 1, 5, 9, 14, 6, 10, 12, 15, 7, 13};    	
+    	
+	tree0.remove(11);
+    	std::string result11{"--------15\n"
+	                    "------14\n"
+                            "--------13\n"
+                            "----12\n"
+                            "--------10\n"
+                            "------9\n"
+                            "--8\n"
+			    "----------7\n"
+			    "--------6\n"
+			    "------5\n"
+			    "----3\n"
+			    "------1\n"};
+	    std::ostringstream ostream2;
+	    tree.print(ostream2, tree0.root(), 1);
+	    REQUIRE( ostream2.str() == result11 )
 }
