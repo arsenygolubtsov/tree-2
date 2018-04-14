@@ -111,12 +111,11 @@ public:
        }
        if (root_->left == nullptr && root_->right == nullptr && root_->value == value)
        {
-	    delete root_;
+	    root_ = nullptr;
 	    return true;
        }
        if (root_->left == nullptr && root_->right == nullptr && root_->value != value)
        {
-	    
 	    return false;
        }
        else
