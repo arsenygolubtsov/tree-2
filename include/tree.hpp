@@ -193,7 +193,9 @@ public:
                            param2=param2->left;
                        }
                        param->value=param2->value;
-                       param1->left=param2->right;
+                       if(param2->right != nullptr){
+			       param1->left=param2->right;
+		       }
                        delete param2;
                    }
                }
