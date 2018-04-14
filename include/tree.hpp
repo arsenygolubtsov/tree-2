@@ -109,6 +109,11 @@ public:
        {
            return false;
        }
+       if (root_->left == nullptr && root_->right == nullptr)
+       {
+	    delete root_;
+	    return true;
+       }
        else
        {
            node_t* param1 = root_;
