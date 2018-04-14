@@ -109,10 +109,15 @@ public:
        {
            return false;
        }
-       if (root_->left == nullptr && root_->right == nullptr)
+       if (root_->left == nullptr && root_->right == nullptr && root_->value == value)
        {
 	    delete root_;
 	    return true;
+       }
+       if (root_->left == nullptr && root_->right == nullptr && root_->value! = value)
+       {
+	    
+	    return false;
        }
        else
        {
