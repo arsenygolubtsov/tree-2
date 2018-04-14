@@ -31,6 +31,11 @@ public:
         }
     }
     
+    bool isEmpty()
+	{
+		return (!root_);
+	}
+    
     bool equal(node_t* a, node_t* b) const{
         if (a==nullptr && b==nullptr) return(true);
         else if (a!=nullptr && b!=nullptr)
