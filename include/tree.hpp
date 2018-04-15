@@ -105,7 +105,7 @@ public:
     }
     
    bool remove(T value){
-    if(root_ = nullptr){
+    if(root_ == nullptr){
         return false;
     }
     else{
@@ -183,7 +183,7 @@ public:
             param1 = param2;
             param2 = param2->right;
             if(param2->left == nullptr){
-                if(param2->right == nullptr{
+                if(param2->right == nullptr){
                     node->value = param2->value;
                     param1->right = nullptr;
                     delete param2;
