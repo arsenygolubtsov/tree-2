@@ -161,11 +161,12 @@ public:
 			       node_t* node = root_;
 			       root_ = root_->right;
 			       delete node;
+			       delete param1;
 		       }
-                       if(param2==param1->right){
+                       else if(param2==param1->right){
                            param1->right=param2->right;
                        }
-                       if(param2==param1->left){
+                       else if(param2==param1->left){
                            param1->left=param2->right;
                        }
                        delete param2;
@@ -175,11 +176,12 @@ public:
 			       node_t* node = root_;
 			       root_ = root_->left;
 			       delete node;
+			       delete param1;
 		       }
-                       if(param2==param1->right){
+                       else if(param2==param1->right){
                            param1->right=param2->left;
                        }
-                       if(param2==param1->left){
+                       else if(param2==param1->left){
                            param1->left=param2->left;
                        }
                        delete param2;
