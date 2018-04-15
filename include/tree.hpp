@@ -118,7 +118,7 @@ public:
        {
 	    return false;
        }
-       else
+       if ((root_->left != nullptr || root_->right != nullptr) && root_->value != value)
        {
            node_t* param1 = root_;
            node_t* param2 = root_;
